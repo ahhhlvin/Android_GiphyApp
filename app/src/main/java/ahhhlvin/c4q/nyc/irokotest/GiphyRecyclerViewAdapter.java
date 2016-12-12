@@ -4,18 +4,19 @@ package ahhhlvin.c4q.nyc.irokotest;
  * Created by alvin2 on 11/3/16.
  */
 import android.content.Context;
-import android.os.Handler;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class GiphyRecyclerViewAdapter extends RecyclerView.Adapter<GifImageViewHolders> {
+public class GiphyRecyclerViewAdapter extends RecyclerView.Adapter<GiphyRecyclerViewAdapter.GifImageViewHolders> {
     private List<GiphyObject> itemList;
     private Context context;
 
@@ -81,6 +82,30 @@ public class GiphyRecyclerViewAdapter extends RecyclerView.Adapter<GifImageViewH
     public int getItemCount() {
         return itemList.size();
     }
+
+
+
+
+    class GifImageViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        ImageView gifImageView;
+        String highDefGifURL;
+
+        GifImageViewHolders(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+            gifImageView = (ImageView) itemView.findViewById(R.id.gifImageView);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent gifActivityIntent = new Intent(view.getContext(), GifActivity.class);
+            gifActivityIntent.putExtra("HD_GIF_URL", highDefGifURL);
+            view.getContext().startActivity(gifActivityIntent);
+        }
+    }
 }
+
+
 
 
