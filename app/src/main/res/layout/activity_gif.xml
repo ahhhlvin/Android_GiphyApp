@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ahhhlvin.c4q.nyc.irokotest.GifActivity">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/soloGifImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
